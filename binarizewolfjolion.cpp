@@ -12,6 +12,13 @@
  * Research notebook 24.4.2001, page 132 (Calculation of s)
  **************************************************************/
 
+/* Updates:
+ *
+ * 2021-09-13 Petr Vcelak,
+ *   - switch to opencv4,
+ *   - and use IMREAD_GRAYSCALE instead of CV_LOAD_IMAGE_GRAYSCALE.
+ */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <getopt.h>
@@ -377,7 +384,9 @@ int main (int argc, char **argv)
 
 
     // Load the image in grayscale mode
-    Mat input = imread(inputname,CV_LOAD_IMAGE_GRAYSCALE);
+    // 2021-09-13 Petr Vcelak: Supposed to use IMREAD_GRAYSCALE
+    //                         instead of CV_LOAD_IMAGE_GRAYSCALE
+    Mat input = imread(inputname, IMREAD_GRAYSCALE);
 
 
     if ((input.rows<=0) || (input.cols<=0)) {
